@@ -1,36 +1,39 @@
 document.addEventListener("DOMContentLoaded",loadCatogories())
+const category = document.querySelector('.grid-container')
+category.addEventListener("click", storeValue)
 
 
-
+//assign catergories to different options
 async function loadCatogories(){
-    // document.querySelector('.loading').classList.add('loader')
     try{
+        document.querySelector('.loading').classList.add('loader')
+        document.querySelector('.grid-container').style.visibility='hidden'
         const categories = await getCatergories()
-        console.log(categories)
+        if(!categories){
+            throw new Error('Issue loading categories')
+        }
 
         //iterate through categories array and display names in html 
-        //add the name to the data type
         categories.forEach((category,  index)=>{
             document.querySelector(`.category${index} h3`).innerHTML= capitializeFirstLetter(category.title)
+            document.querySelector(`.category${index}`).value=category.title
+
 
         })
-
     }catch(err){
         console.log(`Error has occured at loadCatogories:: ${err}`)
+    }finally{
+         document.querySelector('.loading').classList.remove('loader')
+         document.querySelector('.grid-container').style.visibility='visible'
+
     }
-
-
-    //get name and id from the catogories 
-    //display name from catogories 
-    //append background image to catogories 
 }
 
 
 
-//fetch catergories
+//fetch catergories from api
 async function getCatergories(){
     //return top 6 catorgies in an array of objects
-    // include name, image, id 
     try{    
         let response = await fetch(`https://api.artic.edu/api/v1/category-terms?limit=6`)
         if(!response){
@@ -59,4 +62,12 @@ function capitializeFirstLetter(title){
    return word[0].toUpperCase() + word.slice(1, word.length)
    })
    .join(' ')
+}
+
+function storeValue(e){
+    localStorage.removeItem('search')
+    const search = e.target.value || e.target.innerHTML.toLowerCase()
+    localStorage.setItem('search', search)
+    console.log('local', localStorage.getItem('search'))
+    
 }

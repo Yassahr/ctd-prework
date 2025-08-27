@@ -95,7 +95,6 @@
   h3{
     font-size: 3rem;
     margin: 0 auto;
-    border: solid rgb(157, 30, 30);
     text-align: center;
   }
   h3:hover{
@@ -113,9 +112,6 @@
   }
  
 
-  
-  
-  
   /* Loading Function */
   .loader{
     position: fixed;
@@ -151,3 +147,34 @@
       transform:rotate(1turn);
     }
   } 
+  /* artwork html  */
+  .art{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+  .description{
+    font-size: 2rem;
+    color: purple;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid white;
+     margin: 10px auto;
+    text-align: center
+  }
+  .art img{
+    margin: auto;
+    width: 50%;
+    height: auto
+  }
+  .contianer{
+   padding: 3rem;
+    margin:auto;
+  }
+  .navigation{
+    display:block;
+    text-align:center;
+    font-size: 2rem;
+    margin-bottom:3rem;
+  }
+ 

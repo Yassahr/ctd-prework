@@ -15,7 +15,9 @@ This is a simple frontend application that allows users to explore art from the 
 <br/>
 
 # Get Started
-[Link here](#)
+Access the website through link below:
+
+[Link here](https://yassahr.github.io/ctd-prework/html/index.html)
 
 # Optimizations 
 - Refactoring this code in React would be ideal, it would allow for less redundant code and overall better user experience.

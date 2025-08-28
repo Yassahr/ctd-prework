@@ -43,7 +43,7 @@ async function fetchArtWork(search){
         if(!search){
             alert('Error Invalid Input')
             //redirect user to home
-            window.location.href = "main.html"
+            window.location.href = "index.html"
         } 
         const pages= Math.floor(Math.random() * 400);
         let response = await fetch(`https://api.artic.edu/api/v1/artworks/search?q=${search}?limit=10&from=${pages}&fields=image_id,title,thumbnail,id,score`)
